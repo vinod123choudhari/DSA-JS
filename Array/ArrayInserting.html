@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Insert Element in Array</title>
+    <script>
+      // let data =[60,30,10,67,40];
+      // let newEl= 70;
+      // let position=2;
+      // console.warn(data)
+
+      // for(let i=data.length-1;i>=0;i--){
+      //     // console.warn(data[i])
+      //     if(i>=position)
+      //     {
+      //         data[i+1]=data[i];
+      //         if(i==position)
+      //         {
+      //             data[i]=newEl;
+      //         }
+      //     }
+      // }
+      // console.warn(data)
+     function insertEl() {
+  let data = [60, 30, 10, 67, 40];
+  let newEl = parseInt(document.getElementById('newEl').value);
+  let position = parseInt(document.getElementById('position').value);
+
+  
+  if (isNaN(newEl) || isNaN(position)) {
+    console.error("Please enter valid number values for both inputs.");
+    return;
+  }
+
+  if (position < 0 || position > data.length) {
+    console.error("Enter a valid position between 0 and " + data.length);
+    return;
+  }
+
+  // Shift elements to the right
+  for (let i = data.length - 1; i >= position; i--) {
+    data[i + 1] = data[i];
+  }
+
+  
+  data[position] = newEl;
+
+  
+  console.log("Updated Array:", data);
+}
+
+    </script>
+  </head>
+  <body>
+    <input type="text" id="position" placeholder="enter position" />
+    <input type="text" id="newEl" placeholder="enter new element" />
+
+    <button onclick="insertEl()">Insert</button>
+  </body>
+</html>
